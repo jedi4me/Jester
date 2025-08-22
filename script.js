@@ -74,21 +74,39 @@ const modal = document.getElementById('videoModal');
 const modalVideo = document.getElementById('modalVideo');
 const closeBtn = document.querySelector('.video-modal .close');
 
-// Play video on hover
-videoItems.forEach(video => {
-  video.addEventListener('mouseenter', () => video.play());
-  video.addEventListener('mouseleave', () => {
-    video.pause();
-    video.currentTime = 0; // reset
-  });
+// Function to check if on mobile
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // Open in fullscreen modal
+videoItems.forEach(video => {
+  // Play on hover (desktop only)
+  if (!isMobile) {
+    video.addEventListener('mouseenter', () => video.play());
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0; // reset
+    });
+  }
+
+  // Open in fullscreen modal on click (works on desktop & mobile)
   video.parentElement.addEventListener('click', () => {
     modal.style.display = 'flex';
     modalVideo.src = video.src;
     modalVideo.play();
+
+    // Pause original video if hovering
+    video.pause();
+    video.currentTime = 0;
   });
 });
+
+// Close modal
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+  modalVideo.pause();
+  modalVideo.currentTime = 0;
+  modalVideo.src = ''; // optional, free memory
+});
+
 
 // Close modal
 closeBtn.addEventListener('click', () => {

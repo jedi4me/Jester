@@ -92,7 +92,7 @@ body{
 
 .video-item:hover video {
   transform: scale(1.1);
-  display: true;
+  play: true;
 }
 
 /* Fullscreen Modal */
