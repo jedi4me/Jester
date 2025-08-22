@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jester — Connected Hearts</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Background hearts canvas -->
+  <canvas id="bgCanvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Jester home">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <circle cx="32" cy="32" r="30" fill="#000"/>
+          <path d="M20 40c8 6 16 6 24 0 M22 24c2-6 8-6 10 0 M32 24c2-6 8-6 10 0"
+                stroke="#E10600" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="brand-text">Jester</span>
+      </a>
+
+      <button id="burger" class="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav" class="nav" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#gallery" class="nav-link">Photo Gallery</a>
+        <a href="#testimonials" class="nav-link">My Testimonials</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="openSearch" class="nav-link nav-search" aria-label="Open search">🔎 Search</button>
+        <a href="chat.ph" class="chat-pill" title="Open Chat">💬 Chat</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <h1 class="hero-title reveal">Love Without Boundaries</h1>
+        <p class="hero-sub reveal delay-1">Jester happens to be one of the most loving, truthful, unique,
+          dedicated, rich, priceless relationship, that hardly exists — anywhere in the world.</p>
+        <div class="hero-cta reveal delay-2">
+          <a class="btn btn-primary" href="signup.ph">View Now</a>
+          <a class="btn btn-outline" href="#gallery">Explore Gallery</a>
+        </div>
+
+        <div class="hero-stats reveal delay-3" aria-hidden="true">
+          <div><strong>120k+</strong><span>photos</span></div>
+          <div><strong>1</strong><span>countries</span></div>
+          <div><strong>24/7</strong><span>connections</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="about" class="section features">
+      <div class="container">
+        <h2 class="section-title reveal">Why Jester?</h2>
+        <div class="cards">
+          <article class="card reveal">
+            <h3>Love</h3>
+            <p>A pure showdown of the unique moments and memories, shared by Jester</p>
+          </article>
+          <article class="card reveal delay-1">
+            <h3>Memories Forever</h3>
+            <p>You can upload photos and keep your special moments safe and beautiful.</p>
+          </article>
+          <article class="card reveal delay-2">
+            <h3>Private & Secure</h3>
+            <p>Designed with privacy in mind — you control your space with Jed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Shorts Section -->
+<section class="video-shorts">
+  <h2>💖 Jester Moments Shorts</h2>
+  <div class="video-grid">
+    <!-- Video Item -->
+    <div class="video-item">
+      <video src="videos/short1.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short2.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short3.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short4.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short5.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short6.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short7.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short8.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short9.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short10.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short11.mp4" muted loop></video>
+    </div>
+    <div class="video-item">
+      <video src="videos/short12.mp4" muted loop></video>
+    </div>
+  </div>
+</section>
+
+<!-- Fullscreen Modal -->
+<div id="videoModal" class="video-modal">
+  <span class="close">&times;</span>
+  <video id="modalVideo" controls autoplay></video>
+</div>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section gallery">
+      <div class="container">
+        <h2 class="section-title reveal">Photo Gallery</h2>
+
+        <div class="gallery-controls reveal delay-1">
+          <input id="gallerySearch" class="search-input" type="text"
+                 placeholder="Search photos — e.g. wedding, smile, family" aria-label="Search gallery">
+          <div class="note">Tip: type keywords to filter • works on tags below photos</div>
+        </div>
+
+        <div class="grid gallery-grid reveal delay-2" id="galleryGrid">
+          <figure class="photo" data-tags="couple smile love">
+            <img src="gallery/image1.jpg" alt="First kiss prepartion">
+            <figcaption>First kiss prepartion</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="natural lips">
+            <img src="gallery/image2.jpg" alt="Black & red natural lips">
+            <figcaption>Black & red natural lips</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="Forehead">
+            <img src="gallery/image3.jpg" alt="Forehead">
+            <figcaption>She has big forehead</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="Best friend photo">
+            <img src="gallery/image4.jpg" alt="Friends laughing">
+            <figcaption>Best Friend Photo</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="romance date couple">
+            <img src="gallery/image5.jpg" alt="Romantic moment">
+            <figcaption>Romantic moment</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="The look">
+            <img src="gallery/image6.jpg" alt="The look">
+            <figcaption>The look</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="Cherries">
+            <img src="gallery/image7.jpg" alt="Cherries">
+            <figcaption>Cherries</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="Weird Smile">
+            <img src="gallery/image8.jpg" alt="Weird Smile">
+            <figcaption>Weird Smile in Squeezy look</figcaption>
+          </figure>
+
+          <figure class="photo" data-tags="Powder Girl">
+            <img src="gallery/image10.jpg" alt="Powder Girl">
+            <figcaption>Powder Girl</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section testimonials">
+      <div class="container">
+        <h2 class="section-title reveal">Statements we've made</h2>
+
+        <div class="testi-wrap reveal delay-1">
+          <button class="tbtn prev" aria-label="Previous testimonial">‹</button>
+          <div class="testimonials-track" id="testiTrack">
+            <blockquote class="testi active">
+              <p>“The girl that still looks so cute during sleep 🥺♥”</p>
+              <cite>— Jedidiah</cite>
+            </blockquote>
+            <blockquote class="testi">
+              <p>“First of, you always make me happy a lot....🥹
+                  A happy mind makes the skin bright😂🤭..
+                      You normally send me money to buy snacks..🤭
+                      And lastly, your lovely cute messages is a caring act..”</p>
+              <cite>— Esther</cite>
+            </blockquote>
+            <blockquote class="testi">
+              <p>“Welcome to my wife's Month. My baby's month.. My sugar month, My inside my body month 👀, My you in me's month, My everything's month ❤.... Welcome to your month baby 😻💝. 100 birthday presents for you 🤭🥺”</p>
+              <cite>— Jedidiah</cite>
+            </blockquote>
+            <blockquote class="testi">
+              <p>“💌💌💌....
+My man's the cutest..✅🥰 the freshest...✅❤..The most handsome✅ .. the most brilliant...✅🤗👏 The most skillful and most talented...✅😌 The world best..✅🔥. The Rizz lord himself ✅😌...The finest...✅🤭. The odogwu of my life..✅. The joy of my life ..✅. The reason behind my smile ..✅💋. A.k.A my MAN....🥰✅
+I just want to use this opportunity to express how grateful I am to God that I met you and I have you as my man, not only as my man, but as my Husband... My Forever...🌹🫀...
+Thank you for loving me the way you do, irrespective of my flaws...
+Thank you for always making me feel on top of the world 😍😊...
+Thank you for the beautiful memories you've helped us create...❤🌹
+Thank you for all your support and sweet words❤🌹🙈...
+I can't wait to experience what our future is going to be like🙈🔥...
+I'll Love you till forever...❤..."</p>
+              <cite>— Esther</cite>
+              <blockquote class="testi">
+              <p>“You're kind 😄 
+                  You're truthful 🥺♥
+                  You're unique (I always told you that you act differently from every other girl, I testify to the fact that I've not seen any other girl like you) 
+                  You're perfect ✨ to the point that there's no space left to add more.
+                  You're caring 🫂 - Ahhh.... No no no... Naaaaaaa. I rest my case. 
+                  You're respectful 🥺♥
+                  You're intelligent ♥
+                  You're beautiful 😫
+                  You're the sweetest 🥺♥”</p>
+              <cite>— Jedidiah</cite>
+            </blockquote>
+          </div>
+          <button class="tbtn next" aria-label="Next testimonial">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <h2 class="section-title">Get In Touch</h2>
+          <p>Questions, feedback or partnership ideas? Drop us a note — this demo contact form is front-end only.</p>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal delay-1" novalidate>
+          <label><span>Name</span><input type="text" name="name" placeholder="Your full name" required></label>
+          <label><span>Email</span><input type="email" name="email" placeholder="you@example.com" required></label>
+          <label class="wide"><span>Message</span><textarea name="message" rows="5" placeholder="Write your message…" required></textarea></label>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="reset" class="btn btn-outline">Reset</button>
+          </div>
+          <p id="contactStatus" class="contact-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="brandline">
+        <svg class="logo small" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="#000"/>
+          <path d="M20 40c8 6 16 6 24 0 M22 24c2-6 8-6 10 0 M32 24c2-6 8-6 10 0"
+                stroke="#E10600" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+        <strong>Jester</strong>
+        <small>Connecting hearts since 2025</small>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="socials" aria-hidden="false">
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Facebook">📘</a>
+      </div>
+    </div>
+    <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
+  </footer>
+
+  <!-- Search Overlay -->
+  <div id="searchOverlay" class="search-overlay" hidden>
+    <button id="closeSearch" class="close-search" aria-label="Close search">×</button>
+    <form id="searchForm" class="search-form" role="search">
+      <input id="globalSearch" type="search" placeholder="Search gallery, people, memories..." aria-label="Search all">
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- ===========================
+       GLOBAL CHAT WIDGET (AI MOCK)
+       =========================== -->
+  <div id="chatWidget" class="chat-widget" aria-live="polite">
+    <button id="chatToggle" class="chat-toggle" aria-label="Open chat">
+      <span class="chat-badge" id="chatBadge">!</span>
+      <svg viewBox="0 0 24 24" class="chat-icon" aria-hidden="true"><path fill="#fff" d="M4 4h16v10H7l-3 3z"/></svg>
+    </button>
+
+    <aside id="chatPanel" class="chat-panel" aria-hidden="true" role="dialog" aria-label="Chat window with Jester Bot">
+      <header class="chat-header">
+        <div class="chat-user">
+          <img src="https://picsum.photos/seed/jester/64/64" alt="Jester avatar" class="chat-avatar"/>
+          <div>
+            <strong>Jester Bot</strong>
+            <small class="status online">AI helper • Demo</small>
+          </div>
+        </div>
+        <div class="chat-actions">
+          <button id="minimizeChat" class="icon-btn" title="Minimize">–</button>
+          <button id="closeChat" class="icon-btn" title="Close">×</button>
+        </div>
+      </header>
+
+      <div id="messagesArea" class="chat-messages" tabindex="0" aria-live="polite">
+        <!-- demo welcome -->
+        <div class="msg from">
+          <div class="bubble">Hi! I'm <strong>Jester Bot</strong> 🤖💕 — ask me for photo suggestions, romantic message ideas, or say “hello”.</div>
+        </div>
+      </div>
+
+      <form id="chatForm" class="chat-composer" autocomplete="off" role="search">
+        <button type="button" id="emojiBtn" class="icon-btn" title="Emoji">😊</button>
+        <input id="chatInput" type="text" placeholder="Say hi to Jester Bot…" aria-label="Type a message"/>
+        <input id="chatTo" type="hidden" value="0" />
+        <button class="btn send-btn" type="submit" aria-label="Send message">Send</button>
+      </form>
+    </aside>
+  </div>
+
+</body>
+</html>
