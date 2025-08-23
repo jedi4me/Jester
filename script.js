@@ -68,24 +68,44 @@ const $$ = s => Array.from(document.querySelectorAll(s));
   }));
 })();
 
-// Select video items
-const videoItems = document.querySelectorAll('.video-item video');
 const modal = document.getElementById('videoModal');
 const modalVideo = document.getElementById('modalVideo');
 const closeBtn = document.querySelector('.video-modal .close');
 
-// Function to check if on mobile
+// Detect mobile devices
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 videoItems.forEach(video => {
-  // Play on hover (desktop only)
+  
+  // Hover play on desktop only
   if (!isMobile) {
     video.addEventListener('mouseenter', () => video.play());
     video.addEventListener('mouseleave', () => {
       video.pause();
-      video.currentTime = 0; // reset
+      video.currentTime = 0;
     });
   }
+
+  // Click to open fullscreen modal (desktop & mobile)
+  video.parentElement.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    modalVideo.src = video.src; // set modal video source
+    modalVideo.muted = false; // allow sound
+    modalVideo.play();
+    
+    // Pause original video if playing
+    video.pause();
+    video.currentTime = 0;
+  });
+});
+
+// Close modal functionality
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+  modalVideo.pause();
+  modalVideo.currentTime = 0;
+  modalVideo.src = ''; // free memory
+});
 
   // Open in fullscreen modal on click (works on desktop & mobile)
   video.parentElement.addEventListener('click', () => {
@@ -97,7 +117,6 @@ videoItems.forEach(video => {
     video.pause();
     video.currentTime = 0;
   });
-});
 
 // Close modal
 closeBtn.addEventListener('click', () => {
